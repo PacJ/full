@@ -33,3 +33,4 @@ where emp.deptno = (select deptno from dept where loc = 'CHICAGO');
 select * 
 from emp natural join dept
 where dept.loc = 'CHICAGO';
+
