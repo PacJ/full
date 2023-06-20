@@ -198,5 +198,64 @@ from (select stu_no, stu_name, stu_height
     order by stu_height desc)
 where rownum <= 5;
 
+--CURSOR
 ---------------------------------------------------------------------------------------------
---복수 개의 결과값이 있을 경우 select into를 사용 할 수 없다.
+--복수 개의 결과값(행)이 있을 경우 select into를 사용 할 수 없다.
+--cursor: 쿼리문에 의해 반환되는 결과값을 저장하는 메모리 공간
+--select문의 결과 행 별로 특정 작업 수행
+set serveroutput on;
+
+create or replace procedure test7
+is
+v_stu_no enrol.stu_no%type;
+v_sub_no enrol.sub_no%type;
+v_enr_grade enrol.enr_grade%type;
+
+--1.명시적 커서 선언
+cursor t_cursor is
+    select stu_no, sub_no, enr_grade
+    from enrol
+    where sub_no=105; --데이터를 뽑아 t_cursor에 넣어줌.
+    
+begin
+    --2. 커서열기
+    open t_cursor;
+    loop
+        --3. 커서로부터 읽어온 데이터 가져옴.
+        fetch t_cursor into v_stu_no, v_sub_no, v_enr_grade;
+        exit when t_cursor%notfound;
+        dbms_output.put_line(v_stu_no || ' ' || v_sub_no || ' ' || v_enr_grade);
+    end loop;
+    --4. 커서 닫음
+    close t_cursor;
+    end test7;
+    /
+
+execute test7;
+
+declare
+--커서 데이터가 입력될 변수 선언
+v_row emp%rowtype;
+
+--1. 명시적 커서 선언
+cursor t_cursor is
+select * from emp;
+
+begin
+--2. 커서 열기
+open t_cursor;
+loop
+--3. 커서로부터 읽어온 데이터 가져옴
+    fetch t_cursor into v_row;
+    exit when t_cursor%notfound;
+    dbms_output.put_line(v_row.empno || ' ' || v_row.ename);
+    end loop;
+    
+    --4. 커서 닫음
+    close t_cursor;
+    end;
+    /
+
+        
+    
+

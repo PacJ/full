@@ -1,0 +1,24 @@
+sjwsrh@naver.com
+뉴딜1402방
+Scanner 대신 BufferedReader사용
+
+pdf
+https://nlp.jbnu.ac.kr/PL2020/
+
+-Spring Security
+-Input,OutputStream
+
+		//오버라이딩 vs 오버로딩
+		
+//		Overriding occurs when a subclass provides a different implementation of a method already defined in its superclass,
+//		using the same method signature (name, return type, and parameters).
+		
+//		Overloading occurs when multiple methods in the same class have the same name but different parameters,
+//		allowing for different variations of method calls within the class.
+
+Abstract class로부터 객체 생성은 불가능하다.
+
+In Java, the contains() method checks for equality by invoking the equals() method .
+When you call a.contains(pp), it iterates over the elements in the ArrayList and compares each element with the provided object pp using the equals() method
+
+pdb : pluggable database

@@ -1,0 +1,44 @@
+<블록요소>
+- div, ul, ol, li, p, table....
+- 크기값을 지정할 수 있음
+- 한줄에 한개만 배치
+- 상하좌우마진 모두 가짐
+- 기본 너비값은 100%
+
+​<인라인요소>
+- span, a, strong, textarea
+- 크기값 지정못함
+- 한줄에 여러개 배치
+- 상하마진 못가짐
+- 기본너비값은 컨텐츠 너비값
+
+블록 박스<div, p, h1>
+-항상 새 라인에서 시작함.
+-옆에 다른 요소 배치 불가능.
+-width, height 크기 조절가능
+-padding, margin 크기 조절 가능
+-블록 박스 안에만 배치
+
+인라인박스 <a, span, textarea, input>
+-새 라인에서 시작못함(라인 안에 있음)
+-옆에 다른 요소 배치 가능
+-width, height 크기 조절 불가능
+-margin-top, margin-bottom 조절 불가능
+-모든 박스 안 배치 가능
+
+인라인 블록박스
+(display:inline-block)
+- 새 라인에서 시작 못함(인라인 특성)
+- 모든 박스 안 배치 가능(인라인 특성)
+- 옆에 다른 요소 배치 가능(인라인 특성)
+- width, height 크기 조절 가능(블록 특성)
+- padding, margin 조절 가능(블록 특성)
+
+position:
+relative : 자기 자신 기준(원레 위치 기준)
+fixed: 고정 배치(브라우저 전체 화면 기준)
+absolute: 자식(부모인 relative를 기준으로)
+	absolute -> 부모를 찾는다 -> 부모가 있으면 부모 안에서만 움직ㅇ니다.
+	행동 기준이 부모가 있는 위치
+	relative 가 있는 태그의 좌측 상단이 기준이 됨.
+	부모 중 relative가 없다 -> body 태그 기준으로 움직임

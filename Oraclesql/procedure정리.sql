@@ -1,5 +1,3 @@
-set serveroutput on;
-
 --1.	emp1 테이블을 복사하여 emp01 이라는 테이블을 생성해라.
 create table emp01
 as select * from emp;
@@ -36,28 +34,31 @@ select * from emp01;
 --5.	emp01 테이블에 있는 사원번호(empno)와 입력한 사원번호값이 같은 사원이름(ename)과 월급(sal), 직무(job)를 검색하는 프로시저를 생성하라.(프로시저: search_pro)
 --단, 받는 변수를 바인드 변수로 설정하여 프로시저를 실행시켜라.
 --사원번호는 7844로 입력해라.
+set serveroutput on; --on으로 설정해야 dbms 출력이 가능해진다.
+
 create or replace procedure search_pro
-(v_empno in emp01.empno%type,
-v_ename out emp01.ename%type,
-v_sal out emp01.sal%type,
-v_job out emp01.job%type
-)
+(v_empno in emp01.empno%type)
 is
+    v_ename emp01.ename%type;
+    v_sal emp01.sal%type;
+    v_job emp01.job%type;
 begin
     select ename, sal, job
     into v_ename, v_sal, v_job
     from emp01
     where empno = v_empno;
+    
+dbms_output.put_line(v_ename || ' ' || v_sal || ' ' || v_job);
 end;
 /
 
-  variable o_ename VARCHAR2(20);
-  variable o_sal NUMBER;
-  variable o_job VARCHAR2(20);
+variable searchnum number; --바인드 변수 설정
 
-
-execute search_pro(7844, :o_ename, :o_sal, :o_job);
+execute :searchnum :=7844; --변수 값 대입
+execute search_pro(:searchnum);
 
 print o_ename;
 print o_sal;
 print o_job;
+
+

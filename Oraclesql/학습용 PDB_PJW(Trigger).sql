@@ -58,3 +58,27 @@ select * from dept_delete;
 rollback;
 delete from emp
 where empno = 7788;
+
+create table emp500(
+empno number(4),
+ename varchar2(10),
+workdate date);
+
+--사원테이블에 사원이 추가삽입될 때
+--연봉이 5000보다 크면 emp500테이블에 추가삽입된 사원번호, 사원이름, 날짜가 삽입하는 트리거 작성
+-- :new if then
+create or replace trigger on5k
+after insert on emp
+for each row
+
+begin
+    if :new.sal > 5000 then
+    insert into emp500 values(:new.empno, :new.ename, :new.hiredate);
+    end if; --조건문 컷
+    end on5k;
+/
+
+insert into emp values(1111, 'JP', 'student', 7839, sysdate, 5600, null, 10);
+
+select * from emp500;
+select * from emp;

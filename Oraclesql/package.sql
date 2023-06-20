@@ -1,19 +1,19 @@
 -- package
-create package pack11
+create package pack111
 is
-procedure test2
+procedure test222
 (v_stu_no in student.stu_no%type,
 v_stu_grade in student.stu_grade%type);
 
-function test6(v_enr_grade in number)
+function test666(v_enr_grade in number)
 
 return char;
 end;
 /
 
-create package body pack11
+create package body pack111
 is
-    procedure test2
+    procedure test222
     (v_stu_no in student.stu_no%type,
     v_stu_grade in student.stu_grade%type)
     is
@@ -21,9 +21,9 @@ is
         update student
         set stu_grade = v_stu_grade
         where stu_no = v_stu_no;
-    end test2;
+    end test222;
 
-    function test6(v_enr_grade in number)
+    function test666(v_enr_grade in number)
     return char 
     is
         enr_score char;
@@ -35,14 +35,20 @@ is
         else enr_score:='F';
         end if;
         return (enr_score);
-    end test6;
-end pack11;
+    end test666;
+end pack111;
 /
+commit;
 
-execute pack11.test2(20153088,3);
+execute pack111.test222(20153088,1);
+select * from student;
+
+variable d_score char;
+execute :d_score := pack111.test666(95);
+print d_score
 
 begin
-pack11.test2(20153088, 2);
+pack111.test222(20153088, 3);
 end;
 /
 

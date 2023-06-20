@@ -1,0 +1,10 @@
+DML, DCL, DDL
+Data Manipulation Language -INSERT, UPDATE, DELETE etc.
+Data Control Language - GRANT, EVOKE etc.
+Data Definition Language - CREATE, DROP, ALTER etc.
+
+저장 서브 프로그램
+stored procedure(sp)
+stored function(sf)
+package
+trigger
