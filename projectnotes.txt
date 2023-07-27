@@ -1,0 +1,11 @@
+when adding a new expense, a category field is selectable(ex_category).
+I want a few default values for selectable categories, as well as an option to create a custom one.
+
+-need to add default selectable category_ids and category_names into the ex_category table.
+-need to add a function that allows me to insert a new category into the ex_category table, after 
+checking if the category currently exists
+-need to add a control statement that inserts the excategory_id according to selected default value.
+
+-moving categories: allows the option of moving an expense or income(full row) into a different category.
+	-I will give the user the option of leaving the expense in the previous category, or deleting it.
+
